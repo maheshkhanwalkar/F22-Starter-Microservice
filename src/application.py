@@ -26,6 +26,7 @@ def get_health():
 
     # DFF TODO Explain status codes, content type, ... ...
     result = Response(json.dumps(msg), status=200, content_type="application/json")
+    result.headers.add('Access-Control-Allow-Origin', '*')
 
     return result
 
@@ -40,7 +41,9 @@ def get_student_by_uni(uni):
     else:
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
 
+    rsp.headers.add('Access-Control-Allow-Origin', '*')
     return rsp
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5011)
