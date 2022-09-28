@@ -27,6 +27,7 @@ def get_health():
     # DFF TODO Explain status codes, content type, ... ...
     result = Response(json.dumps(msg), status=200, content_type="application/json")
     result.headers.add('Access-Control-Allow-Origin', '*')
+    result.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 
     return result
 
@@ -42,6 +43,7 @@ def get_student_by_uni(uni):
         rsp = Response("NOT FOUND", status=404, content_type="text/plain")
 
     rsp.headers.add('Access-Control-Allow-Origin', '*')
+    rsp.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     return rsp
 
 
