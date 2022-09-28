@@ -4,7 +4,7 @@ from flask import Flask, Response, request
 from datetime import datetime
 import json
 from columbia_student_resource import ColumbiaStudentResource
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 # Create the Flask application object.
 app = Flask(__name__,
@@ -16,6 +16,7 @@ CORS(app)
 
 
 @app.get("/api/health")
+@cross_origin()
 def get_health():
     t = str(datetime.now())
     msg = {
@@ -33,6 +34,7 @@ def get_health():
 
 
 @app.route("/api/students/<uni>", methods=["GET"])
+@cross_origin()
 def get_student_by_uni(uni):
 
     result = ColumbiaStudentResource.get_by_key(uni)
